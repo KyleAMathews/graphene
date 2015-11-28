@@ -68,6 +68,47 @@
 .hljs-link {
   text-decoration: underline;
 }
+/* Position and sizing of burger button */
+.bm-burger-button {
+  position: absolute;
+  width: 24px;
+  height: 20px;
+  right: 36px;
+  top: 42px;
+}
+ 
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+  background: white;
+}
+ 
+/* Color of close button cross */
+.bm-cross {
+  background: #bdc3c7;
+  margin-top: -1px;
+  width: 1px!important;
+  height: 18px!important;
+}
+ 
+/* Background color of sidebar */
+.bm-menu {
+  background: #3c3c3c;
+  box-shadow: -1px 0 5px rgba(0,0,0,.15);
+}
+ 
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+  fill: white;
+}
+ 
+.bm-menu-wrap {
+  z-index: 10000!important;
+}
+/* General menu styles */
+.bm-menu {
+  padding: 2.5em 1.5em 0;
+  font-size: 1.15em;
+}
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -256,7 +297,7 @@ th {
 }
 .wrapper,
 .header-wrapper,
-.title h1,
+.page-title h1,
 .docs {
   *zoom: 1;
   width: auto;
@@ -270,18 +311,18 @@ th {
 }
 .wrapper:before,
 .header-wrapper:before,
-.title h1:before,
+.page-title h1:before,
 .docs:before,
 .wrapper:after,
 .header-wrapper:after,
-.title h1:after,
+.page-title h1:after,
 .docs:after {
   content: '';
   display: table;
 }
 .wrapper:after,
 .header-wrapper:after,
-.title h1:after,
+.page-title h1:after,
 .docs:after {
   clear: both;
 }
@@ -295,6 +336,9 @@ a:hover {
 a {
   color: #2a5dad;
 }
+p {
+  margin-bottom: 1em;
+}
 html,
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -302,6 +346,9 @@ body {
   font-size: 16px;
   color: #606060;
   line-height: 1.5;
+  height: 100%;
+  margin: 0;
+  width: 100%;
 }
 .header {
   zoom: 1;
@@ -395,6 +442,44 @@ body {
   left: 50%;
   margin-left: -3px;
   bottom: -24px;
+}
+@media only screen and (max-width: 600px) {
+  .header-nav {
+    display: none;
+  }
+}
+.bm-burger-button,
+.bm-menu-wrap,
+.bm-overlay {
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .bm-burger-button,
+  .bm-menu-wrap,
+  .bm-overlay {
+    display: block;
+  }
+}
+.bm-burger-button {
+  z-index: 300 !important;
+}
+.bm-overlay {
+  z-index: 1000 !important;
+}
+.bm-item-list a {
+  font-family: 'Raleway';
+  display: block;
+  font-size: 15px;
+  color: #ccc;
+  margin: 6px 0;
+  padding: 10px 6px;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 20px;
+  position: relative;
+}
+.bm-item-list a:hover {
+  color: #fff;
 }
 .header-logo {
   font-family: 'Raleway';
@@ -505,6 +590,11 @@ body {
   filter: alpha(opacity=0);
   position: absolute;
 }
+@media only screen and (max-width: 600px) {
+  .starwars-example-wrapper {
+    margin-bottom: 30px;
+  }
+}
 .starwars-example {
   background: #3c3c3c;
   display: inline-block;
@@ -556,6 +646,11 @@ body {
   transform: translateY(-3px);
   -webkit-box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.32);
   box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.32);
+}
+@media only screen and (max-width: 600px) {
+  .starwars-example {
+    top: -70px;
+  }
 }
 .improve-document-link {
   position: fixed;
@@ -643,6 +738,11 @@ body {
 .markdown .wrapper {
   margin-top: 60px;
 }
+@media only screen and (max-width: 600px) {
+  .markdown .wrapper {
+    margin-top: 30px;
+  }
+}
 .markdown h1 {
   font-size: 32px;
 }
@@ -682,6 +782,13 @@ body {
   border: 1px solid #ccc;
   color: #000;
 }
+.markdown p + p,
+.markdown p + ul {
+  margin-top: -0.4em;
+}
+.markdown p + ul {
+  margin-top: -0.6em;
+}
 .markdown code {
   font-size: 14px;
   line-height: 20px;
@@ -691,17 +798,22 @@ body {
   margin-top: 0;
   padding-top: 0;
 }
-.title {
+.page-title {
   background: #f9f9f9;
-  padding: 54px 0;
+  padding: 48px 0;
 }
-.title h1 {
+.page-title h1 {
   margin: 0 auto;
   font-family: 'Raleway';
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 200;
   color: #585858;
-  line-height: 49px;
+  line-height: 50px;
+}
+@media only screen and (max-width: 600px) {
+  .page-title {
+    padding: 30px 0;
+  }
 }
 .docs-aside {
   *zoom: 1;
@@ -769,6 +881,7 @@ body {
   }
 }
 .docs-aside-navselect {
+  margin-top: -18px;
   display: none;
   width: 100%;
 }
@@ -786,6 +899,7 @@ body {
   margin-left: 0%;
   margin-right: 3%;
   margin-top: 60px;
+  margin-bottom: 20px;
 }
 .docs-content:before,
 .docs-content:after {
@@ -824,6 +938,11 @@ body {
 .docs-content >h1 {
   margin: 0;
   font-size: 32px;
+}
+.docs-content .docs-next {
+  float: right;
+  color: #e05b49;
+  font-weight: 400;
 }
 @-moz-keyframes logo-dash {
   to {
